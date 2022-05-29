@@ -47,7 +47,7 @@ public class DesignTacoController {
     @GetMapping
     public String showDesignForm(Model model, @ModelAttribute Taco taco) {
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepository.findAll().forEach(ingredient -> ingredients.add(ingredient));
+        ingredientRepository.findAll().forEach(ingredients::add);
 
         for (Type type : Type.values()) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
